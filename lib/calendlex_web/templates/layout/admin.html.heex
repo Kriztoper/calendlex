@@ -9,6 +9,9 @@
         <%= live_redirect to: Routes.live_path(@socket, CalendlexWeb.Admin.ScheduledEventsLive), class: admin_nav_link_classes(@section == "scheduled_events") do %>
           Scheduled events
         <% end %>
+        <%= live_redirect to: Routes.live_path(@socket, CalendlexWeb.Admin.AttendeesLive), class: admin_nav_link_classes(@section == "attendees") do %>
+          Attendees
+        <% end %>
       </nav>
     </header>
   </div>
