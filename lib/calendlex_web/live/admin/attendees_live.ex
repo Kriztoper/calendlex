@@ -5,20 +5,20 @@ defmodule CalendlexWeb.Admin.AttendeesLive do
 
   @impl LiveView
   def mount(_params, _session, socket) do
-    {:ok, socket, temporary_assigns: [event_types: []]}
+    {:ok, socket, temporary_assigns: [attendees: []]}
   end
 
   @impl LiveView
   def handle_params(_, _, socket) do
-    event_types = Calendlex.available_event_types()
+    attendees = Calendlex.available_event_types()
 
     socket =
       socket
-      |> assign(event_types: event_types)
-      |> assign(event_types_count: length(event_types))
-      |> assign(section: "event_types")
-      |> assign(page_title: "Event types")
-      |> assign(delete_event_type: nil)
+      |> assign(attendees: attendees)
+      |> assign(attendees_count: length(attendees))
+      |> assign(section: "attendees")
+      |> assign(page_title: "Attendees")
+      |> assign(delete_attendee: nil)
 
     {:noreply, socket}
   end
@@ -48,5 +48,13 @@ defmodule CalendlexWeb.Admin.AttendeesLive do
 
   def handle_event("modal_close", _, socket) do
     {:noreply, assign(socket, delete_event_type: nil)}
+  end
+
+  def nav_link_classes(is_current) do
+    class_list([
+      {"py-6 font-medium text-gray-400 border-b-2 border-white hover:border-gray-400 hover:text-gray-600",
+       true},
+      {"text-gray-600 border-blue-500 hover:text-gray-600 hover:border-blue-500", is_current}
+    ])
   end
 end

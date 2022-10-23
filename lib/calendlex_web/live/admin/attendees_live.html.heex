@@ -6,7 +6,7 @@
     <% end %>
   </div>
 </div>
-<%= if @event_types_count > 0 do %>
+<%= if @attendees_count > 0 do %>
   <%!-- <div class="mt-4 grid grid-cols-3 gap-6">
     <%= for event_type <- @event_types do %>
       <.live_component module={CalendlexWeb.Admin.Components.EventType} id={"event_type_" <> event_type.id} event_type={event_type} />
@@ -18,9 +18,9 @@
     <p class="">You'll want to add an attendee to attend the event with you.</p>
   </div>
 <% end %>
-<%= if @delete_event_type  do %>
+<%= if @delete_attendee  do %>
   <Modal.show>
-    <:header>Delete <%= @delete_event_type.name %></:header>
+    <:header>Delete <%= @delete_attendee.name %></:header>
     <p>Users will be unable to schedule further meetings with deleted event types. Meetings previously scheduled will not be affected.</p>
     <:footer>
       <Modal.cancel_button>No</Modal.cancel_button>
